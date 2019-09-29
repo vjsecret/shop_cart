@@ -23,20 +23,20 @@ django:
 11	權限與註冊
 
 endpoint:
-    path('index', LoginView.as_view(template_name='index.html'), name="index"),
-    path('login', LoginView.as_view(template_name='login.html'), name="login"),
-    path('logout/', views.logout_view, name='logout'),
-    path('register/', views.register, name='register'),
-    path('showinfo/<attr>/', views.showinfo),
-    path('car', views.car),
-    path('comic', views.comic),
-    path('article', views.article),
-    path('member/<attr>/', views.member),
-    path('member/manager/<attr>/', views.manager),
-    path('topic/<int:topic_id>/',views.topic,name='topic'), #path('<int:topic_id>/',views.topic,name='topic'),
-    path('new_topic/',views.new_topic,name='new_topic'),
-    path('new_entry/<int:topic_id>/',views.new_entry,name='new_entry'),
-    path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
+path('index', LoginView.as_view(template_name='index.html'), name="index"),
+path('login', LoginView.as_view(template_name='login.html'), name="login"),
+path('logout/', views.logout_view, name='logout'),
+path('register/', views.register, name='register'),
+path('showinfo/<attr>/', views.showinfo),
+path('car', views.car),
+path('comic', views.comic),
+path('article', views.article),
+path('member/<attr>/', views.member),
+path('member/manager/<attr>/', views.manager),
+path('topic/<int:topic_id>/',views.topic,name='topic'), #path('<int:topic_id>/',views.topic,name='topic'),
+path('new_topic/',views.new_topic,name='new_topic'),
+path('new_entry/<int:topic_id>/',views.new_entry,name='new_entry'),
+path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
 
 網站規劃:
 menu: comic， article， store，序號兌換，我的最愛(comic， article，商品)，搜尋功能 (1)每一頁的首頁顯示排行榜；顯示所有商品小圖示，預設以XXX分類排序；搜尋功能 (2)可以選擇依分類排序:熱門、.... (3)點圖示可進去詳細介紹頁面，(顯示集數:for comic, article使用；未購買圖片下面顯示加入購物車；購買完圖示下面顯示瀏覽:導至每集的sub) 在每一集被使用者點擊時記錄點擊次數(一個ip只能點一次)=>排行榜使用 記錄每個使用者對每一集的點擊總次數 (4)點store圖示可進去列出店家販賣商品:顯示所有商品小圖示，預設以熱門商品排序，可以選擇依分類排序
