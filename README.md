@@ -1,13 +1,13 @@
-目的是想證明有能力使用django、python coding與資料庫基本概念，由於時間有限的考量，先跳過寫測試程式
+#目的是想證明有能力使用django、python coding與資料庫基本概念，由於時間有限的考量，先跳過寫測試程式  
 
-參考http://dokelung-blog.logdown.com/posts/235592-django-notes-table-of-contents後，建立簡單的購物車
+參考http://dokelung-blog.logdown.com/posts/235592-django-notes-table-of-contents後，建立簡單的購物車  
 
-練習主題:
-FrontEnd: 展示會使用bootstrap、輪播功能
-了解RESTful API
-了解Entity-relationship model
-RDB基本概念:正規劃、多對多、一對多、一對一
-使用ajax
+#練習主題:  
+FrontEnd: 展示會使用bootstrap、輪播功能  
+了解RESTful API  
+了解Entity-relationship model  
+RDB基本概念:正規劃、多對多、一對多、一對一  
+使用ajax  
 
 django:
 1	建置與環境設定
