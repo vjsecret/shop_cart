@@ -22,20 +22,34 @@ django:
 10	用戶的登入與登出
 11	權限與註冊
 
-endpoint:
-path('index', LoginView.as_view(template_name='index.html'), name="index"),
-path('login', LoginView.as_view(template_name='login.html'), name="login"),
-path('logout/', views.logout_view, name='logout'),
-path('register/', views.register, name='register'),
-path('showinfo/<attr>/', views.showinfo),
-path('car', views.car),
-path('comic', views.comic),
-path('article', views.article),
-path('member/<attr>/', views.member),
-path('member/manager/<attr>/', views.manager),
-path('topic/<int:topic_id>/',views.topic,name='topic'), #path('<int:topic_id>/',views.topic,name='topic'),
-path('new_topic/',views.new_topic,name='new_topic'),
-path('new_entry/<int:topic_id>/',views.new_entry,name='new_entry'),
+endpoint:  
+
+path('index', LoginView.as_view(template_name='index.html'), name="index"),  
+
+path('login', LoginView.as_view(template_name='login.html'), name="login"),  
+
+path('logout/', views.logout_view, name='logout'),  
+
+path('register/', views.register, name='register'),  
+
+path('showinfo/<attr>/', views.showinfo),  
+
+path('car', views.car),  
+
+path('comic', views.comic),  
+
+path('article', views.article),  
+
+path('member/<attr>/', views.member),  
+
+path('member/manager/<attr>/', views.manager),  
+
+path('topic/<int:topic_id>/',views.topic,name='topic'), #path('<int:topic_id>/',views.topic,name='topic'),  
+
+path('new_topic/',views.new_topic,name='new_topic'),  
+
+path('new_entry/<int:topic_id>/',views.new_entry,name='new_entry'),  
+
 path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry'),
 
 網站規劃:
