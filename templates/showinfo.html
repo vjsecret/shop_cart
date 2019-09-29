@@ -1,0 +1,179 @@
+﻿{% extends 'model_index1_ajax.html' %}
+{% block title %} 店家 {% endblock%}
+{% block header %}
+<script type="text/javascript">
+function addItem(){
+					console.log(this.name);
+					const it=this.name;
+					const t1 = document.getElementsByClassName("card-title")[it].innerHTML;
+					console.log(t1)
+					//var b = document.getElementById("content").getElementsByClassName("price")[it].value;
+					var b = document.getElementsByClassName("price")[it].innerHTML;
+					console.log(b);
+					console.log(b.value);
+					const a="price";	
+					items = {};
+					items["title"]=t1;
+					items[a]=b;
+					//items["price"]="180";
+					console.log(items);
+					
+					$.ajax({
+					url: './addCar',
+					type: 'POST',
+					data: items,
+					//data: {"title": "酸菜", "price": "180"},
+					dataType: 'json',
+					timeout: 100,
+					success: function(result) {
+						//console.log(result.result);
+						if ( result.result == "post_success" ) {
+							//$("#ntfText").html("發起成功");
+							$("#ntfText").html(result.result);
+							}else {
+							$("#ntfText").html("重複發起了");
+							}
+						}										
+					});
+}
+</script>
+<header>
+<div class="container">
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><!--<nav class="navbar navbar-expand-md fixed-top font-weight-bold">-->
+		<a class="navbar-brand" href="/index"><img class="mylogo img-responsive" src="..\..\static\images\coffee\bean3.png" alt="LOGO" style="width:60px;">  </img>
+		</a>
+		<!--<div class="collapse navbar-collapse" id="navbarContent"><!--<div class="row">-->
+		<!--<div class="col-md-8">-->
+			<ul class="navbar-nav flex-row-reverse"><!--<ul class="navbar-nav mr-auto"><ul class="nav nav-tabs navbar-fixed-top">-->
+			  <li class="nav-item">
+				<a class="nav-link" href="/car">
+						&nbsp;<i class="fas fa-github"></i>購物車<!--<span class="sr-only">(current)--></span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/showinfo/article">
+						&nbsp;<i class="fas fa-github"></i>文章</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/showinfo/comic">
+						&nbsp;<i class="fas fa-github"></i>漫畫</a>
+			  </li>
+			  <li class="nav-item active">
+				<a class="nav-link active" href="/showinfo/store">
+						&nbsp;<i class="fas fa-github"></i>店家</a>
+			  </li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+				  {% if user.is_authenticated %}
+					<a class="nav-link" href="/member/info">
+							&nbsp;<i class="fas fa-github"></i>會員中心</a>
+					<button class="btn btn-outline-success my-sm-0" id="btnLogout">
+					<a class="nav-link" href="/logout">會員登出</a></button>
+				  {% else %}
+					<button class="btn btn-outline-success my-sm-0" id="btnLogin">
+					<a class="nav-link" href="/login">
+						&nbsp;<i class="fas fa-sign-in-alt" >會員登入</a></button>
+					<button class="btn btn-outline-success my-sm-0" id="liSignUp">
+					<a class="nav-link" href="/register">
+						&nbsp;<i class="fas fa-sign-in-alt">註冊</a></button>
+				  {% endif %}
+				</li>
+			</ul>
+	<!--</div>-->
+	</nav>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <!--<a class="navbar-brand" href="#">遊戲列表</a>-->
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+		<div class="col-md-4 collapse navbar-collapse" id="mynav">
+
+			<ul class="nav nav-tabs">             
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Dropdown
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="#">Action</a>
+				  <a class="dropdown-item" href="#">Another action</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#">Something else here</a>
+					  <a class="dropdown-item" href="#">Action</a>
+					  <a class="nav-link dropdown-toggle" href="#" id="Anotheraction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Anotheraction
+					  </a>
+						  <div class="dropdown-menu" aria-labelledby="Anotheraction">
+						  <a class="dropdown-item" href="#">Action</a>
+						  <a class="dropdown-item" href="#">Another action</a>
+						  </div>
+				</li>
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Dropdown1
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="#">Action</a>
+				  <a class="dropdown-item" href="#">Another action</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#">Something else here</a>
+				</div>
+				</li> 
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Dropdown2
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="#">Action</a>
+				  <a class="dropdown-item" href="#">Another action</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#">Something else here</a>
+				</div>
+				</li> 
+				</div>
+			</ul>
+
+		</div>
+</nav>
+</header>
+{% endblock%}
+{% block content %}
+{{abc}}
+{% if list %}
+<div id="content" class="col-12 col-m-12">
+	{% for infolist in list %}
+		  <div class="card" style="width: 100%;">
+			<img src="/static/images/face{{infolist.photoid}}.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+			  <a href="/comic/info/{{infolist.id}}" >{{infolist.title}}</a>
+              <h5 class="card-title" id="title">{{infolist.title}}</h5>			  
+			  {% if infolist.content %}
+              <p class="card-text" id="content">{{infolist.content}}</p>
+			  {% endif %}
+			  {% if infolist.price %}
+			  <p class="card-text">價格:<span id="price" class="price" value="{{infolist.price}}">{{infolist.price}}</span></p>
+			  <button class="btn btn-outline-success my-sm-0" id="addCar1" name="{{infolist.id}}" onclick="addItem()">Test加入購物車</button>
+			  <button class="btn btn-outline-success my-sm-0" id="addCar" name="{{infolist.id}}">ajax加入購物車</button>
+			  <form action="/showinfo/article/" method="POST" name="form">
+			  {% csrf_token %}
+			  <!--<input type="hidden" name="title" value="酸菜"></input>-->
+			  <!--<input type="hidden" name="price" value="180"></input>-->
+			  <input type="hidden" name="title" value="{{infolist.title}}"></input>
+			  <input type="hidden" name="price" value="{{infolist.price}}"></input>	
+			  <button class="btn btn-outline-success my-sm-0" id="addCar" name="submit" >form加入購物車</button>	  
+			  </form>
+			  {% endif %}			  
+			</div>
+		  </div>
+	{% endfor %}
+
+</div>
+{% else %}
+	<p>請新增資料</p>
+{% endif %}
+ 
+{% endblock %}
+{% block script] %}	
+    <script src="..\..\static\js\showinfo.js"></script>
+{% endblock %}
+  

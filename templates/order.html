@@ -1,0 +1,114 @@
+﻿{% extends 'model_index1.html' %}
+{% block title %} member {% endblock%}
+{% block header %}
+<header>
+<div class="container">
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"><!--<nav class="navbar navbar-expand-md fixed-top font-weight-bold">-->
+		<a class="navbar-brand" href="/index"><img class="mylogo img-responsive" src="\..\..\..\static\images\coffee\bean3.png" alt="LOGO" style="width:60px;">  </img>
+		</a>
+		<!--<div class="collapse navbar-collapse" id="navbarContent"><!--<div class="row">-->
+		<!--<div class="col-md-8">-->
+			<ul class="navbar-nav flex-row-reverse"><!--<ul class="navbar-nav mr-auto"><ul class="nav nav-tabs navbar-fixed-top">-->
+			  <li class="nav-item">
+				<a class="nav-link" href="/car">
+						&nbsp;<i class="fas fa-github"></i>購物車<!--<span class="sr-only">(current)--></span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/article">
+						&nbsp;<i class="fas fa-github"></i>文章</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/showinfo/comic">
+						&nbsp;<i class="fas fa-github"></i>漫畫</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/showinfo/store">
+						&nbsp;<i class="fas fa-github"></i>店家</a>
+			  </li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+				  {% if user.is_authenticated %}
+					<button class="btn btn-outline-success my-sm-0" id="btnLogout">
+					<a class="nav-link" href="/logout">會員登出</a></button>
+				  {% else %}
+					<button class="btn btn-outline-success my-sm-0" id="btnLogin">
+					<a class="nav-link" href="/login">
+						&nbsp;<i class="fas fa-sign-in-alt" >會員登入</a></button>
+					<button class="btn btn-outline-success my-sm-0" id="liSignUp">
+					<a class="nav-link" href="/register">
+						&nbsp;<i class="fas fa-sign-in-alt">註冊</a></button>
+				  {% endif %}
+				</li>
+			</ul>
+	<!--</div>-->
+	</nav>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <!--<a class="navbar-brand" href="#">遊戲列表</a>-->
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+		<div class="col-md-4 collapse navbar-collapse" id="mynav">
+
+			<ul class="nav nav-tabs">             
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  個人資料
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="/member/manager/info">資料修改</a>
+				  <a class="dropdown-item" href="/member/manager/order">訂單查詢</a>
+				  <a class="dropdown-item" href="/member/manager/mycrud">點數查詢</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#">Something else here</a>					  
+				</li>
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  後台管理
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="#">Something else here</a>
+					  <a class="dropdown-item" href="#">Action</a>
+					  <a class="nav-link dropdown-toggle" href="#" id="Anotheraction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						文章
+					  </a>
+						  <div class="dropdown-menu" aria-labelledby="Anotheraction">
+						  <a class="dropdown-item" href="#">文章管理</a>
+						  <a class="dropdown-item" href="#">文章類別管理</a>
+						  </div>
+				</li>
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Dropdown2
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="#">Action</a>
+				  <a class="dropdown-item" href="#">Another action</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#">Something else here</a>
+				</div>
+				</li> 
+				</div>
+			</ul>
+
+		</div>
+</nav>
+</header>
+{% endblock%}
+{% block content %}
+<div id="test1"> 
+  <p>Order list:</p>
+  <ul>
+    {% for topic in topics %}
+      <li>
+        <a href="{% url 'topic' topic.id %}">{{ topic }}</a>
+	  </li>
+    {% empty %}
+      <a class="nav-link active" href="/showinfo/store">&nbsp;<i class="fas fa-github"></i>請選擇預購物品</a>
+    {% endfor %}
+  </ul>
+</div>  
+{% endblock %}
+{% block script] %}
+{% endblock %}
